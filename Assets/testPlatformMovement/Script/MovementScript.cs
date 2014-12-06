@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class MovementScript : MonoBehaviour {
 
 	public Animator anim;
 	public float speed = 8.0f;
