@@ -48,7 +48,9 @@ public class LevelGenerator : MonoBehaviour
 				}
 				if(level[i][j] == CaseType.Wall)
 				{
-					GameObject clone = (GameObject)Instantiate(prefabWall, new Vector3((((float)j + 0.5f) / nbColumns) * 20, (i+1)*5, 0), Quaternion.identity);
+					GameObject clone = (GameObject)Instantiate(prefabGround, new Vector3((((float)j + 0.5f) / nbColumns) * 20, (i+1)*5, 0), Quaternion.identity);
+					clone.transform.parent = transform;
+					clone = (GameObject)Instantiate(prefabWall, new Vector3((((float)j + 0.5f) / nbColumns) * 20, (i+1)*5 + 2.5f, 0), Quaternion.identity);
 					clone.transform.parent = transform;
 				}
 			}
@@ -100,38 +102,44 @@ public class LevelGenerator : MonoBehaviour
 						break;
 					}
 				}
-				
-				column = Random.Range(marginHole, caseWall - 1);
+
+				do { column = Random.Range(marginHole, caseWall - 1);
+				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
-				column = Random.Range(caseWall + 1, nbColumns - 1 - marginHole);
+				
+				do { column = Random.Range(caseWall + 1, nbColumns - 1 - marginHole);
+				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
 				
 				reduceProbality = reduceProbalityHoleWhenWall;
 			}
 			else
 			{
-				column = Random.Range(marginHole, nbColumns - 1 - marginHole);
+				do { column = Random.Range(marginHole, nbColumns - 1 - marginHole);
+				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
 			}
 			
 			while (RandomByDifficulty(1f - reduceProbality, reduceProbalityHoleMulti))
 			{
-				column = Random.Range(marginHole, nbColumns - 1 - marginHole);
+				do { column = Random.Range(marginHole, nbColumns - 1 - marginHole);
+				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
 				
 				reduceProbality = reduceProbality * 2 + 0.1f;
 			}
 		}
 	}
+
+	bool ConditionHole(int i, int j)
+	{
+		return level[i][j] == CaseType.Solid
+			&& (i <= 0 || level[i-1][j] == CaseType.Solid)
+				&& (i >= nbLines - 1 || level[i+1][j] == CaseType.Solid);
+	}
 	
 	bool RandomByDifficulty(float baseValue, float difficultyMultiplier)
 	{
 		return Random.value < baseValue + difficultyMultiplier * difficulty;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
 	}
 }
