@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 0f8296f74212a1d4f867563583d50cf5
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - prefabGround: {instanceID: 0}
+  - prefabWall: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
