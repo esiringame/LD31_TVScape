@@ -8,11 +8,15 @@ public class LevelGenerator : MonoBehaviour
 	{
 		Solid,
 		Hole,
-		Wall
+		Wall,
+		Crieur
 	}
-	
+
+	public GameObject player;
+
 	public GameObject prefabGround;
 	public GameObject prefabWall;
+	public GameObject prefabCrieur;
 	
 	public int seed = 0;
 	public bool fixSeed = false;
@@ -25,6 +29,7 @@ public class LevelGenerator : MonoBehaviour
 	
 	private const int marginHole = 2;
 	private const int marginWall = 4;
+	private const int marginCrieur = 2;
 	
 	private const float probalityFixWall = 0.2f;
 	private const float probalityMultiWall = 0.1f;
@@ -68,6 +73,18 @@ public class LevelGenerator : MonoBehaviour
 					clone.transform.parent = transform;
 
 					break;
+				case CaseType.Crieur:
+				
+					clone = (GameObject)Instantiate(prefabGround, new Vector3(x, y, 0), Quaternion.identity);
+					clone.transform.parent = transform;
+					
+					y += sizeCase.y / 4;
+					
+					clone = (GameObject)Instantiate(prefabCrieur, new Vector3(x, y, 0), Quaternion.identity);
+					clone.GetComponent<JukeBox>().player = player;
+					clone.transform.parent = transform;
+				
+					break;
 				}
 			}
 		}
@@ -84,6 +101,7 @@ public class LevelGenerator : MonoBehaviour
 		
 		PlaceWalls();
 		PlaceHoles();
+		PlaceCrieur();
 	}
 	
 	void PlaceWalls()
@@ -152,6 +170,27 @@ public class LevelGenerator : MonoBehaviour
 		return level[i][j] == CaseType.Solid
 			&& (i <= 0 || level[i-1][j] == CaseType.Solid)
 				&& (i >= nbLines - 1 || level[i+1][j] == CaseType.Solid);
+	}
+	
+	void PlaceCrieur()
+	{
+		int column;
+		int numberCrieur = difficulty / 4 + 1;
+
+		int n = 0;
+		for (int i = 0; i < nbLines; i++)
+		{
+			if (n >= numberCrieur)
+				break;
+
+			if (nbLines - i > numberCrieur - n && !RandomByDifficulty((float)numberCrieur / 3.0f, 0f))
+				continue;
+
+			do { column = Random.Range(marginCrieur, nbColumns - marginCrieur);
+			} while (level[i][column] != CaseType.Solid);
+			level[i][column] = CaseType.Crieur;
+			n++;
+		}
 	}
 	
 	bool RandomByDifficulty(float baseValue, float difficultyMultiplier)
