@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckRight
   m_TagString: Untagged
   m_Icon: {fileID: 1319202362, guid: 0000000000000000d000000000000000, type: 0}
@@ -28,8 +28,8 @@ GameObject:
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400000}
   - 95: {fileID: 9500000}
-  m_Layer: 0
-  m_Name: ColorEnemy
+  m_Layer: 9
+  m_Name: Colored
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400004}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckLeft
   m_TagString: Untagged
   m_Icon: {fileID: 1319202362, guid: 0000000000000000d000000000000000, type: 0}
@@ -70,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.765267611, y: 17.9656105, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
   m_Children:
   - {fileID: 400004}
   - {fileID: 400000}
@@ -96,9 +96,9 @@ Rigidbody2D:
   m_GameObject: {fileID: 100002}
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -140,15 +140,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c3bf7bdb52a0049aac8ea98978de03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Object: {fileID: 100002}
+  prefab: {fileID: 0}
   color: 0
-  moveSpeed: 5
+  moveSpeed: 3
   Wall:
     serializedVersion: 2
-    m_Bits: 512
-  radiusWall: 2
+    m_Bits: 4294966783
+  radiusWall: .100000001
   checkWallRight: {fileID: 400000}
   checkWallLeft: {fileID: 400004}
+  componentsRGB: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

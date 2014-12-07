@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FantomScript : MonoBehaviour {
+public class GhostBehaviour : MonoBehaviour {
 
 	public float speed = 1.0f;
 	public GameObject player;

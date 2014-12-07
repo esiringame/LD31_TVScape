@@ -9,7 +9,6 @@ public class Teleportation : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D other)
 	{
-		audio.Play ();
 		if (!jump) {
 			
 			if(!target.GetComponent<Teleportation>().isActive){

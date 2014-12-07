@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnFantomScript : MonoBehaviour {
+public class SpawnGhost : MonoBehaviour {
 
 	public GameObject playerInstance;
 	public GameObject fantomInstance;
@@ -27,7 +27,7 @@ public class SpawnFantomScript : MonoBehaviour {
 			{
 				Vector2 fantomSpawnPosition = centerPortionSpawn (playerInstance);
 				fantom = Instantiate(fantomInstance, new Vector3 (fantomSpawnPosition.x, fantomSpawnPosition.y, 0), Quaternion.identity) as GameObject;
-				fantom.GetComponent<FantomScript> ().player = playerInstance;
+				fantom.GetComponent<GhostBehaviour> ().player = playerInstance;
 			}
 			else
 			{
