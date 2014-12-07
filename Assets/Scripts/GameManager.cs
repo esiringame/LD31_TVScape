@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour {
 	
 	private float timeScore;
 
+	Animator anim;
+
 	private bool pause
 	{
 		set { Time.timeScale = value ? 0.0f : 1.0f; }
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		anim = GameOverScreen.GetComponent<Animator>();
+		anim.enabled = false;
 		state = GameState.Playing;
 		timeScore = 0;
 
@@ -63,7 +67,12 @@ public class GameManager : MonoBehaviour {
 			break;
 			
 		case GameState.GameOver:
-			
+			if (Input.GetKeyDown(KeyCode.Return)){
+				GameOverScreen.transform.position = new Vector3(0, 0, 1);
+				anim.enabled = false;
+				//appeler le menu
+				//ChangeScreen();
+			}
 			break;
 			
 		}
@@ -79,9 +88,9 @@ public class GameManager : MonoBehaviour {
 	void ChangeScreen()
 	{
 		Vector3 pos = PauseScreen.transform.position;
-		PauseScreen.transform.position = new Vector3(pos.x, pos.y, state == GameState.Pause ? 1 : 999999);
+		PauseScreen.transform.position = new Vector3(pos.x, pos.y, state == GameState.Pause ? -1 : 999999);
 		pos = GameOverScreen.transform.position;
-		GameOverScreen.transform.position = new Vector3(pos.x, pos.y, state == GameState.GameOver ? 1 : 999999);
+		GameOverScreen.transform.position = new Vector3(pos.x, pos.y, state == GameState.GameOver ? -1 : 999999);
 	}
 
 	void Pause()
@@ -92,7 +101,8 @@ public class GameManager : MonoBehaviour {
 
 	void GameOver()
 	{
+		anim.enabled = true;
+		anim.Play("Base Layer.testNeige");
 		state = GameState.GameOver;
-		pause = true;
 	}
 }
