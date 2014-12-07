@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class MovementScript : MonoBehaviour {
 
-	public Animator anim;
+	//public Animator anim;
 	public float speed = 8.0f;
 
 	public Transform checkGround;
@@ -31,7 +31,7 @@ public class NewBehaviourScript : MonoBehaviour {
 
 	void FixedUpdate() {
 		onGround = Physics2D.OverlapCircle (checkGround.position, radiusGround, Ground);
-		anim.SetBool("Ground", onGround);
+		//anim.SetBool("Ground", onGround);
 	}
 
 }
