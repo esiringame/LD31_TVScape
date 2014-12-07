@@ -18,39 +18,50 @@ public class LevelGenerator : MonoBehaviour
 	public bool fixSeed = false;
 	public int difficulty = 1;
 	
-	public int nbLines = 3;
-	public int nbColumns = 20;
+	private CaseType[][] level;
+	
+	private const int nbLines = 3;
+	private const int nbColumns = 14;
 	
 	private const int marginHole = 1;
 	private const int marginWall = 4;
 	
-	private CaseType[][] level;
-	
-	public float probalityFixWall = 0.2f;
-	public float probalityMultiWall = 0.1f;
-	public float reduceProbalityHoleInit = 0.1f;
-	public float reduceProbalityHoleWhenWall = 0.6f;
-	public float reduceProbalityHoleMulti = 0.02f;
+	private const float probalityFixWall = 0.2f;
+	private const float probalityMultiWall = 0.1f;
+	private const float reduceProbalityHoleInit = 0.1f;
+	private const float reduceProbalityHoleWhenWall = 0.6f;
+	private const float reduceProbalityHoleMulti = 0.02f;
+
+	public Vector2 sizeCase = new Vector2(1.2f, 5);
 	
 	// Use this for initialization
 	void Start()
 	{
 		ProceduralProcess();
 		
-		for(int i  = 0; i < 3; i++)
+		for(int i  = 0; i < nbLines; i++)
 		{
-			for(int j = 0; j < 20; j++)
+			for(int j = 0; j < nbColumns; j++)
 			{
 				if(level[i][j] == CaseType.Solid)
 				{
-					GameObject clone = (GameObject)Instantiate(prefabGround, new Vector3((((float)j + 0.5f) / nbColumns) * 20, (i+1)*5, 0), Quaternion.identity);
+					float x = transform.position.x + ((float)j - nbColumns / 2 + 0.5f) * sizeCase.x;
+					float y = transform.position.y + ((float)i - nbLines / 2) * sizeCase.y;
+
+					GameObject clone = (GameObject)Instantiate(prefabGround, new Vector3(x, y, 0), Quaternion.identity);
 					clone.transform.parent = transform;
 				}
 				if(level[i][j] == CaseType.Wall)
 				{
-					GameObject clone = (GameObject)Instantiate(prefabGround, new Vector3((((float)j + 0.5f) / nbColumns) * 20, (i+1)*5, 0), Quaternion.identity);
+					float x = transform.position.x + ((float)j - nbColumns / 2 + 0.5f) * sizeCase.x;
+					float y = transform.position.y + ((float)i - nbLines / 2) * sizeCase.y;
+
+					GameObject clone = (GameObject)Instantiate(prefabGround, new Vector3(x, y, 0), Quaternion.identity);
 					clone.transform.parent = transform;
-					clone = (GameObject)Instantiate(prefabWall, new Vector3((((float)j + 0.5f) / nbColumns) * 20, (i+1)*5 + 2.5f, 0), Quaternion.identity);
+					
+					y += sizeCase.y / 2;
+
+					clone = (GameObject)Instantiate(prefabWall, new Vector3(x, y, 0), Quaternion.identity);
 					clone.transform.parent = transform;
 				}
 			}
@@ -102,7 +113,7 @@ public class LevelGenerator : MonoBehaviour
 						break;
 					}
 				}
-
+				
 				do { column = Random.Range(marginHole, caseWall - 1);
 				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
@@ -130,7 +141,7 @@ public class LevelGenerator : MonoBehaviour
 			}
 		}
 	}
-
+	
 	bool ConditionHole(int i, int j)
 	{
 		return level[i][j] == CaseType.Solid
