@@ -19,7 +19,7 @@ public class SpawnGhost : MonoBehaviour {
 
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.LeftShift))
+		if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
 		{
 		    isActive = !isActive;
 
