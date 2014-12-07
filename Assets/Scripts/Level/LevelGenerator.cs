@@ -25,7 +25,6 @@ public class LevelGenerator : MonoBehaviour
 	
 	private const int marginHole = 2;
 	private const int marginWall = 4;
-	private const int marginTeleporter = 1;
 	
 	private const float probalityFixWall = 0.2f;
 	private const float probalityMultiWall = 0.1f;
