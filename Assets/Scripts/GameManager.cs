@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject PauseScreen;
 	public GameObject GameOverScreen;
-
 	public GameObject player;
+	
+	private float timeScore;
 
 	private bool pause
 	{
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour {
 	void Start ()
 	{
 		state = GameState.Playing;
+		timeScore = 0;
 
 		pause = false;
 	}
@@ -51,6 +53,8 @@ public class GameManager : MonoBehaviour {
 				Pause();
 				break;
 			}
+
+			timeScore += Time.deltaTime;
 			
 			break;
 			
