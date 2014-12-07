@@ -14,6 +14,8 @@ public class PlayerMotor : MonoBehaviour {
 	private bool onGround = false;
 	private float invicibility = invicibilityTime;
 	private const int invicibilityTime = 2;
+	public AudioClip jump_sound;
+	public AudioClip damage_sound;
 
 	void Start ()
 	{
@@ -29,8 +31,12 @@ public class PlayerMotor : MonoBehaviour {
 			transform.Translate (X * speed * Time.deltaTime,0,0);
 
 		if (Input.GetButtonDown ("Jump") && onGround)
-			rigidbody2D.AddForce(new Vector2(0,jump));
-
+		{
+			rigidbody2D.AddForce (new Vector2 (0, jump));
+			// ###### Mise en place de l'audio du téléporteur ######
+			audio.PlayOneShot(jump_sound, 1.0F);
+			// ###### FIN ######
+		}
 		invicibility += Time.deltaTime;
 		if (invicibility > invicibilityTime)
 			invicibility = invicibilityTime;
@@ -45,6 +51,10 @@ public class PlayerMotor : MonoBehaviour {
 	{
 		if (invicibility < invicibilityTime)
 			return;
+
+		// ###### Mise en place de l'audio du téléporteur ######
+		audio.PlayOneShot(damage_sound, 1.0F);
+		// ###### FIN ######
 
 		if (life > 0)
 			life--;
