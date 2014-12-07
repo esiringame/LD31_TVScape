@@ -4,27 +4,27 @@ using System.Collections;
 public class FantomScript : MonoBehaviour {
 
 	public float speed = 1.0f;
-	public Rigidbody2D player;
+	public GameObject player;
 
 	void Start () {
-	
+
 	}
 
 	void Update () {
 
-		float PosX = player.position.x;
-		if (PosX > rigidbody2D.position.x) {
-						transform.Translate (speed * Time.deltaTime, 0, 0);
-				} 
-		else if (PosX < rigidbody2D.position.x) {
-						transform.Translate (- speed * Time.deltaTime, 0, 0);
-				}
+		float PosX = player.transform.position.x;
+		if (PosX > this.transform.position.x) {
+			transform.Translate (speed * Time.deltaTime, 0, 0);
+		} 
+		else if (PosX < this.transform.position.x) {
+			transform.Translate (- speed * Time.deltaTime, 0, 0);
+		}
 
-		float PosY = player.position.y;
-		if (PosY > rigidbody2D.position.y) {
+		float PosY = player.transform.position.y;
+		if (PosY > this.transform.position.y) {
 			transform.Translate (0, speed * Time.deltaTime,0);
 		}
-		else if (PosY < rigidbody2D.position.y) {
+		else if (PosY < this.transform.position.y) {
 			transform.Translate (0, -speed * Time.deltaTime,0);
 		}
 	}
