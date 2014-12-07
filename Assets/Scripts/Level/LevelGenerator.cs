@@ -23,8 +23,9 @@ public class LevelGenerator : MonoBehaviour
 	private const int nbLines = 3;
 	private const int nbColumns = 14;
 	
-	private const int marginHole = 1;
+	private const int marginHole = 2;
 	private const int marginWall = 4;
+	private const int marginTeleporter = 1;
 	
 	private const float probalityFixWall = 0.2f;
 	private const float probalityMultiWall = 0.1f;
@@ -38,31 +39,36 @@ public class LevelGenerator : MonoBehaviour
 	void Start()
 	{
 		ProceduralProcess();
-		
+
+		float x, y;
 		for(int i  = 0; i < nbLines; i++)
 		{
 			for(int j = 0; j < nbColumns; j++)
 			{
-				if(level[i][j] == CaseType.Solid)
-				{
-					float x = transform.position.x + ((float)j - nbColumns / 2 + 0.5f) * sizeCase.x;
-					float y = transform.position.y + ((float)i - nbLines / 2) * sizeCase.y;
+				x = transform.position.x + ((float)j - nbColumns / 2 + 0.5f) * sizeCase.x;
+				y = transform.position.y + ((float)i - nbLines / 2) * sizeCase.y;
 
-					GameObject clone = (GameObject)Instantiate(prefabGround, new Vector3(x, y, 0), Quaternion.identity);
+				GameObject clone;
+
+				switch (level[i][j])
+				{
+				case CaseType.Solid:
+
+					clone = (GameObject)Instantiate(prefabGround, new Vector3(x, y, 0), Quaternion.identity);
 					clone.transform.parent = transform;
-				}
-				if(level[i][j] == CaseType.Wall)
-				{
-					float x = transform.position.x + ((float)j - nbColumns / 2 + 0.5f) * sizeCase.x;
-					float y = transform.position.y + ((float)i - nbLines / 2) * sizeCase.y;
 
-					GameObject clone = (GameObject)Instantiate(prefabGround, new Vector3(x, y, 0), Quaternion.identity);
+					break;
+				case CaseType.Wall:
+
+					clone = (GameObject)Instantiate(prefabGround, new Vector3(x, y, 0), Quaternion.identity);
 					clone.transform.parent = transform;
 					
 					y += sizeCase.y / 2;
-
+					
 					clone = (GameObject)Instantiate(prefabWall, new Vector3(x, y, 0), Quaternion.identity);
 					clone.transform.parent = transform;
+
+					break;
 				}
 			}
 		}
@@ -91,7 +97,7 @@ public class LevelGenerator : MonoBehaviour
 			if (!RandomByDifficulty(probalityFixWall, probalityMultiWall))
 				continue;
 			
-			int column = Random.Range(marginWall, nbColumns - 1 - marginWall);
+			int column = Random.Range(marginWall, nbColumns - marginWall);
 			level[i][column] = CaseType.Wall;
 		}
 	}
@@ -114,11 +120,11 @@ public class LevelGenerator : MonoBehaviour
 					}
 				}
 				
-				do { column = Random.Range(marginHole, caseWall - 1);
+				do { column = Random.Range(marginHole, caseWall);
 				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
 				
-				do { column = Random.Range(caseWall + 1, nbColumns - 1 - marginHole);
+				do { column = Random.Range(caseWall + 1, nbColumns - marginHole);
 				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
 				
@@ -126,14 +132,14 @@ public class LevelGenerator : MonoBehaviour
 			}
 			else
 			{
-				do { column = Random.Range(marginHole, nbColumns - 1 - marginHole);
+				do { column = Random.Range(marginHole, nbColumns - marginHole);
 				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
 			}
 			
 			while (RandomByDifficulty(1f - reduceProbality, reduceProbalityHoleMulti))
 			{
-				do { column = Random.Range(marginHole, nbColumns - 1 - marginHole);
+				do { column = Random.Range(marginHole, nbColumns - marginHole);
 				} while (!ConditionHole(i, column));
 				level[i][column] = CaseType.Hole;
 				

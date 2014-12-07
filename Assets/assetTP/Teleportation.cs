@@ -16,7 +16,7 @@ public class Teleportation : MonoBehaviour {
 				target.GetComponent<Teleportation>().OnTriggerEnter2D(other);
 			}else{
 				target.GetComponent<Teleportation>().jump = true;
-				other.transform.position = target.transform.position;
+				other.transform.position = target.transform.position + new Vector3(0,0.2f,0);
 			}
 		}
 	}
