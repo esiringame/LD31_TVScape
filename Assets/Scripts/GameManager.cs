@@ -41,13 +41,13 @@ public class GameManager : MonoBehaviour {
 		{
 			
 		case GameState.Playing:
-			/*
+
 			if (player.GetComponent<PlayerMotor>().life <= 0)
 			{
 				GameOver();
 				break;
 			}
-			*/
+
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{
 				Pause();

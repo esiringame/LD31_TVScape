@@ -28,4 +28,10 @@ public class FantomScript : MonoBehaviour {
 			transform.Translate (0, -speed * Time.deltaTime,0);
 		}
 	}
+
+	void OnTriggerStay2D(Collider2D collider)
+	{
+		if(collider.gameObject.tag == "Player")
+			player.GetComponent<PlayerMotor>().TakeDamage();
+	}
 }
