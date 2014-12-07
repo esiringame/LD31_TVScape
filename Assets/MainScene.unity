@@ -478,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabGround: {fileID: 100000, guid: 418112839a551004eaeb0605058d1160, type: 2}
   prefabWall: {fileID: 100000, guid: 1154018cdbc96494fbfb7303b24a2fea, type: 2}
+  prefabTeleporter: {fileID: 100000, guid: fde1999ca75d0f74f85c207bdb224dee, type: 2}
   seed: 0
   fixSeed: 0
   difficulty: 1
