@@ -708,7 +708,6 @@ GameObject:
   - 212: {fileID: 1930694084}
   - 50: {fileID: 1930694083}
   - 61: {fileID: 1930694082}
-  - 114: {fileID: 1930694081}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -716,20 +715,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1930694081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: e0bf7191879f149409ce6fad2d69f073,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1930694080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19d3e2ae3e74394299b5dd0e47d38e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  player: {fileID: 1354041797}
 --- !u!61 &1930694082
 BoxCollider2D:
   m_ObjectHideFlags: 0
