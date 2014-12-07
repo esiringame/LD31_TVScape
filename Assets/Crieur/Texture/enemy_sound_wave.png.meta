@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: b94e5f782ef2dce46af56d022acbd6d4
+guid: 543b1f18e46a5ef47837be98aa117978
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
