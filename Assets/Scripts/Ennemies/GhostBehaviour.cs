@@ -34,4 +34,10 @@ public class GhostBehaviour : MonoBehaviour {
 		if(collider.gameObject.tag == "Player")
 			player.GetComponent<PlayerMotor>().TakeDamage();
 	}
+	void onTriggerEnter2D(Collider2D coll){
+		if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "Player") {
+			Physics2D.IgnoreCollision(this.collider2D,coll);
+		}
+	}
+
 }

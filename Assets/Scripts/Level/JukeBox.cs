@@ -36,4 +36,6 @@ public class JukeBox : MonoBehaviour
 
 		music.mute = muteDistance || muteButton;
 	}
+
+
 }
