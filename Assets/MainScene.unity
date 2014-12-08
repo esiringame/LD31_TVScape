@@ -1674,12 +1674,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {x: 0, y: 1}
   difficulty: 1
-  prefabRed: {fileID: 100002, guid: afd16b8eea9e14141a03078036225592, type: 2}
-  prefabGreen: {fileID: 100002, guid: afd16b8eea9e14141a03078036225592, type: 2}
-  prefabBlue: {fileID: 100002, guid: afd16b8eea9e14141a03078036225592, type: 2}
-  prefabYellow: {fileID: 100002, guid: afd16b8eea9e14141a03078036225592, type: 2}
-  prefabMagenta: {fileID: 100002, guid: afd16b8eea9e14141a03078036225592, type: 2}
-  prefabCyan: {fileID: 100002, guid: afd16b8eea9e14141a03078036225592, type: 2}
+  prefab: {fileID: 100002, guid: afd16b8eea9e14141a03078036225592, type: 2}
+  spriteRed: {fileID: 21300000, guid: fffa43816bb11c844b3b7318dfffeeb9, type: 3}
+  spriteGreen: {fileID: 21300000, guid: 2ada4229a70651242a3cbdb2d5874f85, type: 3}
+  spriteBlue: {fileID: 21300000, guid: df01ba351de5c2447971b0ccacd4c109, type: 3}
+  spriteYellow: {fileID: 21300000, guid: 7ff62373ce4e3434db9ee57ac2611f86, type: 3}
+  spriteMagenta: {fileID: 21300000, guid: 19a910a1d8dea2b4bab895cecf2c2844, type: 3}
+  spriteCyan: {fileID: 21300000, guid: ba6a3d8f19c1a67408924d43cd8aee72, type: 3}
   componentsRGB: {fileID: 1948668877}
 --- !u!1 &1411969073
 GameObject:

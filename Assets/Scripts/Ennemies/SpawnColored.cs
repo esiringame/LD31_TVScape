@@ -5,13 +5,14 @@ public class SpawnColored : MonoBehaviour
 {
 	public Vector2 spawnPoint;
 	public int difficulty = 1;
+	public GameObject prefab;
 
-	public GameObject prefabRed;
-	public GameObject prefabGreen;
-	public GameObject prefabBlue;
-	public GameObject prefabYellow;
-	public GameObject prefabMagenta;
-	public GameObject prefabCyan;
+	public Sprite spriteRed;
+	public Sprite spriteGreen;
+	public Sprite spriteBlue;
+	public Sprite spriteYellow;
+	public Sprite spriteMagenta;
+	public Sprite spriteCyan;
 
 	public GameObject componentsRGB;
 
@@ -27,6 +28,7 @@ public class SpawnColored : MonoBehaviour
 	void Start ()
 	{
 		delayElapsed = 0;
+		GenerateColored();
 	}
 	
 	// Update is called once per frame
@@ -43,26 +45,28 @@ public class SpawnColored : MonoBehaviour
 
 	void GenerateColored()
 	{
+		Sprite spriteToRender;
+
 		ColoredBehaviour.ColorType type;
 		if (difficulty <= 5)
 			type = (ColoredBehaviour.ColorType)Random.Range(0, 3);
 		else
 			type = (ColoredBehaviour.ColorType)Random.Range(0, 6);
 
-		GameObject prefab;
-
 		switch (type)
 		{
-		case ColoredBehaviour.ColorType.Red: prefab = prefabRed; break;
-		case ColoredBehaviour.ColorType.Green: prefab = prefabGreen; break;
-		case ColoredBehaviour.ColorType.Blue: prefab = prefabBlue; break;
-		case ColoredBehaviour.ColorType.Yellow: prefab = prefabYellow; break;
-		case ColoredBehaviour.ColorType.Magenta: prefab = prefabMagenta; break;
-		case ColoredBehaviour.ColorType.Cyan: prefab = prefabCyan; break;
-		default: prefab = prefabRed; break;
+			case ColoredBehaviour.ColorType.Red: spriteToRender = spriteRed; break;
+			case ColoredBehaviour.ColorType.Green: spriteToRender = spriteGreen; break;
+			case ColoredBehaviour.ColorType.Blue: spriteToRender = spriteBlue; break;
+			case ColoredBehaviour.ColorType.Yellow: spriteToRender = spriteYellow; break;
+			case ColoredBehaviour.ColorType.Magenta: spriteToRender = spriteMagenta; break;
+			case ColoredBehaviour.ColorType.Cyan: spriteToRender = spriteCyan; break;
+			default: spriteToRender = spriteRed; break;
 		}
+		//prefab.renderer = coloredRenderer;
 
 		GameObject colored = Instantiate(prefab, new Vector3 (spawnPoint.x, spawnPoint.y, 0), Quaternion.identity) as GameObject;
-		colored.GetComponent<ColoredBehaviour>().componentsRGB = componentsRGB;
+		colored.GetComponent<ColoredBehaviour> ().componentsRGB = componentsRGB;
+		colored.GetComponent<SpriteRenderer>().sprite = spriteToRender;
 	}
 }
