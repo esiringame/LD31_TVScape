@@ -55,8 +55,8 @@ public class SpawnHammer : MonoBehaviour {
 		{
 			case 0: return new Vector2(center.x - width/2, center.y + height/2); break;
 			case 1: return new Vector2(center.x + width/2, center.y + height/2); break;
-			case 2: return new Vector2(center.x + width/2, center.y - height/2); break;
-			case 3: return new Vector2(center.x - width/2, center.y - height/2); break;
+			case 2: return new Vector2(center.x - width/2, center.y - height/2); break;
+			case 3: return new Vector2(center.x + width/2, center.y - height/2); break;
 		}
 		return Vector2.zero;
 	}
