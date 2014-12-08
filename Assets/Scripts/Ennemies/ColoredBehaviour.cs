@@ -70,7 +70,9 @@ public class ColoredBehaviour : MonoBehaviour
 		case ColorType.Cyan: visible = green && blue; break;
 		}
 
-		gameObject.SetActive(visible);
+		Color temp = GetComponent<SpriteRenderer>().color;
+		temp.a = visible ? 1 : 0;
+		GetComponent<SpriteRenderer>().color = temp;
 	}
 
 	void flip() //demi tour, renversement de sprite
