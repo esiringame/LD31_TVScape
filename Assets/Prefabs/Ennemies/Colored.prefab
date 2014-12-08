@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: CheckRight
   m_TagString: Untagged
   m_Icon: {fileID: 1319202362, guid: 0000000000000000d000000000000000, type: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: CheckLeft
   m_TagString: Untagged
   m_Icon: {fileID: 1319202362, guid: 0000000000000000d000000000000000, type: 0}
@@ -43,9 +43,8 @@ GameObject:
   - 114: {fileID: 11400000}
   - 95: {fileID: 9500000}
   - 212: {fileID: 21200000}
-  - 58: {fileID: 5800000}
   - 61: {fileID: 6100002}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Colored
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -83,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.03022623, y: 1.37749219, z: 0}
+  m_LocalPosition: {x: -14.302, y: -4.36999989, z: 0}
   m_LocalScale: {x: .349999994, y: .349999994, z: .349999994}
   m_Children:
   - {fileID: 400002}
@@ -105,17 +104,6 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!58 &5800000
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Radius: .715994179
-  m_Center: {x: -.200000003, y: .25}
 --- !u!61 &6100000
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -125,8 +113,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1.19118559, y: .857996285}
-  m_Center: {x: -.214240208, y: -.582212746}
+  m_Size: {x: 1.42162657, y: 1.71392238}
+  m_Center: {x: -.197778434, y: -.154251382}
 --- !u!61 &6100002
 BoxCollider2D:
   m_ObjectHideFlags: 1

@@ -82,10 +82,17 @@ public class ColoredBehaviour : MonoBehaviour
 		transform.Translate(direction*0.5f, 0, 0);
 	}
 
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "Player") {
+			Physics2D.IgnoreCollision(this.collider2D,coll);
+		}
+
+	}
+
 	void OnTriggerStay2D(Collider2D collider)
 	{
 		if(collider.gameObject.tag == "Player")
 			player.GetComponent<PlayerMotor>().TakeDamage();
 	}
-
 }
