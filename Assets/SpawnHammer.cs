@@ -28,10 +28,9 @@ public class SpawnHammer : MonoBehaviour {
 				corner = Random.Range(0,4);
 				glass = screenScript.GetComponent<ScreenScript>().GetGlass(corner);
 			} while (!glass.GetComponent<SpriteRenderer>().enabled);
-			/*
-			GameObject colored = Instantiate(prefab, new Vector3 (spawnPoint.x, spawnPoint.y, 0), Quaternion.identity) as GameObject;
-*/
-deltaHammer -= timerHammer;
+			GameObject colored = Instantiate(prefab, new Vector3 (transform.position.x, transform.position.y, 0), Quaternion.identity) as GameObject;
+
+			deltaHammer -= timerHammer;
 		}
 	}
 }

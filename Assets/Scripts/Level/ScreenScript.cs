@@ -73,6 +73,7 @@ public class ScreenScript : MonoBehaviour {
 		case 3 : return glassScreen3;
 			break;
 		}
+		return null;
 	}
 	
 	IEnumerator Wait(){
