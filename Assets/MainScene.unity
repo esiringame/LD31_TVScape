@@ -728,6 +728,7 @@ GameObject:
   - 58: {fileID: 744571444}
   - 58: {fileID: 744571443}
   - 61: {fileID: 744571442}
+  - 82: {fileID: 744571449}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -804,8 +805,8 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 4294967039
-  jump_sound: {fileID: 0}
-  damage_sound: {fileID: 0}
+  jump_sound: {fileID: 8300000, guid: aec83f73b43e2934d8c162f43d4f1da2, type: 3}
+  damage_sound: {fileID: 8300000, guid: 0df628fd62abf8b428afeb2c4388063d, type: 3}
 --- !u!50 &744571446
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -845,6 +846,64 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0212bac58da708e4fa3ff73d534d956a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &744571449
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 744571440}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &863723267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,7 +1733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {x: 0, y: 1}
   difficulty: 1
-  prefab: {fileID: 100002, guid: afd16b8eea9e14141a03078036225592, type: 2}
+  prefab: {fileID: 100004, guid: afd16b8eea9e14141a03078036225592, type: 2}
   spriteRed: {fileID: 21300000, guid: fffa43816bb11c844b3b7318dfffeeb9, type: 3}
   spriteGreen: {fileID: 21300000, guid: 2ada4229a70651242a3cbdb2d5874f85, type: 3}
   spriteBlue: {fileID: 21300000, guid: df01ba351de5c2447971b0ccacd4c109, type: 3}
@@ -1735,7 +1794,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: cbc5640952af45b4c965d2ae8ac8d4cb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 1
   Mute: 0

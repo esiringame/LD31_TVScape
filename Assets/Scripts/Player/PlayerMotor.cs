@@ -13,8 +13,8 @@ public class PlayerMotor : MonoBehaviour {
 	public LayerMask Ground;
 
 	private bool onGround = false;
-	private float invicibility = invicibilityTime;
 	private const int invicibilityTime = 2;
+	private float invicibility = invicibilityTime;
 	public AudioClip jump_sound;
 	public AudioClip damage_sound;
 

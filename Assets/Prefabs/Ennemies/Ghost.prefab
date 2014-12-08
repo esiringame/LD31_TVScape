@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.80999994, y: -.150000006, z: 0}
+  m_LocalPosition: {x: -2.03067923, y: 2.53492165, z: 0}
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,8 +55,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 4.69283152, y: 3.08474207}
-  m_Center: {x: -.131907463, y: -.131908253}
+  m_Size: {x: 1.69333375, y: 1.87981522}
+  m_Center: {x: .0347312279, y: .0347304344}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
