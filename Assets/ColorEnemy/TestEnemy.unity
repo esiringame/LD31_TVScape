@@ -207,7 +207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1737498320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30d80fd509487c43936b457bd5a224b, type: 3}
+  m_Script: {fileID: 11500000, guid: 77c3bf7bdb52a0049aac8ea98978de03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 1737498320}
@@ -216,7 +216,7 @@ MonoBehaviour:
   Wall:
     serializedVersion: 2
     m_Bits: 512
-  radiusWall: 5
+  radiusWall: 2
   checkWallRight: {fileID: 1553130287}
   checkWallLeft: {fileID: 2118224594}
 --- !u!50 &1737498322
