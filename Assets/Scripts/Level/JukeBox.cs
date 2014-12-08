@@ -55,7 +55,9 @@ public class JukeBox : MonoBehaviour
 			Vector2 posCrieur = new Vector2(crieur.transform.position.x, crieur.transform.position.y);
 
 			directionForce = (-posCrieur + posPlayer);
-			if (!muteButton) {player.rigidbody2D.AddForceAtPosition(directionForce*Force, posCrieur);}
+			if (!muteButton) {player.rigidbody2D.AddForceAtPosition(directionForce*Force, posCrieur);}else{Physics2D.IgnoreCollision (this.collider2D, collider, true);}
+
+
 		}
 	}
 
@@ -64,8 +66,15 @@ public class JukeBox : MonoBehaviour
 			Vector2 posCrieur = new Vector2(crieur.transform.position.x, crieur.transform.position.y);
 			Vector2 directionForce = new Vector2(1, 1);
 
-			if (!muteButton) {player.rigidbody2D.AddForceAtPosition(directionForce*Force/2, posCrieur);}
+			if (!muteButton) {player.rigidbody2D.AddForceAtPosition(directionForce*Force/2, posCrieur);}else{Physics2D.IgnoreCollision (this.collider2D, collider, true);}
 		}
 	}
 
+	void OnTriggerExit2D(Collider2D collider) {
+		if(collider.gameObject.tag == "Player") {
+
+			Physics2D.IgnoreCollision (this.collider2D, collider, false);
+		}
+	}
+	
 }
