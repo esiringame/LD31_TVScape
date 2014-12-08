@@ -13,10 +13,14 @@ public class PlayerMotor : MonoBehaviour {
 	public LayerMask Ground;
 
 	private bool onGround = false;
-	private float invicibility = invicibilityTime;
 	private const int invicibilityTime = 2;
+	private float invicibility = invicibilityTime;
 	public AudioClip jump_sound;
 	public AudioClip damage_sound;
+
+	public bool isInvicible{
+		get{return invicibility < invicibilityTime;}
+	}
 
 	void Start ()
 	{
@@ -37,7 +41,12 @@ public class PlayerMotor : MonoBehaviour {
 		invicibility += Time.deltaTime;
 		if (invicibility > invicibilityTime)
 			invicibility = invicibilityTime;
+
+		Color temp = GetComponent<SpriteRenderer> ().color;
+		temp.a = isInvicible ? 0.5f : 1f;
+		GetComponent<SpriteRenderer> ().color = temp;
 	}
+
 
 	void FixedUpdate()
 	{

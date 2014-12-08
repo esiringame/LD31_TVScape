@@ -67,6 +67,7 @@ public class SpawnColored : MonoBehaviour
 
 		GameObject colored = Instantiate(prefab, new Vector3 (spawnPoint.x, spawnPoint.y, 0), Quaternion.identity) as GameObject;
 		colored.GetComponent<ColoredBehaviour> ().componentsRGB = componentsRGB;
+		colored.GetComponent<ColoredBehaviour>().color = type;
 		colored.GetComponent<SpriteRenderer>().sprite = spriteToRender;
 	}
 }

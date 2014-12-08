@@ -8,6 +8,7 @@ public class ColoredBehaviour : MonoBehaviour
 	public enum ColorType {Red = 0, Green = 1, Blue = 2, Yellow = 3, Magenta = 4, Cyan = 5};
 
 	public GameObject prefab;
+	public GameObject player;
 
 	public ColorType color;
 	public float moveSpeed;
@@ -22,11 +23,13 @@ public class ColoredBehaviour : MonoBehaviour
 	
 	private float direction;
 	private bool visible;
+
 	
 	void Awake ()
 	{
 		visible = true;
 		direction = Random.Range(0.0f, 2.0f) - 1.0f;
+		onWall = false;
 	}
 	
 	void Update ()
@@ -44,8 +47,9 @@ public class ColoredBehaviour : MonoBehaviour
 	}
 
 	void FixedUpdate() {
-		onWall = Physics2D.OverlapCircle (checkWallRight.position, radiusWall, Wall)
-			|| Physics2D.OverlapCircle (checkWallLeft.position, radiusWall, Wall) ;
+		onWall = false;
+		//onWall = Physics2D.OverlapCircle (checkWallRight.position, radiusWall, Wall)
+		//	|| Physics2D.OverlapCircle (checkWallLeft.position, radiusWall, Wall);
 		//anim.SetBool("Wall", onWall);
 	}
 
@@ -66,7 +70,9 @@ public class ColoredBehaviour : MonoBehaviour
 		case ColorType.Cyan: visible = green && blue; break;
 		}
 
-		gameObject.SetActive(visible);
+		Color temp = GetComponent<SpriteRenderer>().color;
+		temp.a = visible ? 1 : 0;
+		GetComponent<SpriteRenderer>().color = temp;
 	}
 
 	void flip() //demi tour, renversement de sprite
@@ -78,4 +84,17 @@ public class ColoredBehaviour : MonoBehaviour
 		transform.Translate(direction*0.5f, 0, 0);
 	}
 
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "Player") {
+			Physics2D.IgnoreCollision(this.collider2D,coll);
+		}
+
+	}
+
+	void OnTriggerStay2D(Collider2D collider)
+	{
+		if(collider.gameObject.tag == "Player")
+			player.GetComponent<PlayerMotor>().TakeDamage();
+	}
 }
