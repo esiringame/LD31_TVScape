@@ -51,37 +51,30 @@ public class JukeBox : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D collider) {
 		if(collider.gameObject.tag == "Player") {
-
-			if(muteButton){
-				Physics2D.IgnoreCollision(this.collider2D,collider,true);
-			}else{
-				Physics2D.IgnoreCollision(this.collider2D,collider,false);
-				onde.SetActive(true);
-			}
-
 			Vector2 posPlayer = new Vector2(player.transform.position.x, player.transform.position.y);
 			Vector2 posCrieur = new Vector2(crieur.transform.position.x, crieur.transform.position.y);
 
 			directionForce = (-posCrieur + posPlayer);
-			if (!muteButton) {player.rigidbody2D.AddForceAtPosition(directionForce*Force, posCrieur);}
+			if (!muteButton) {player.rigidbody2D.AddForceAtPosition(directionForce*Force, posCrieur);}else{Physics2D.IgnoreCollision (this.collider2D, collider, true);}
+
+
 		}
 	}
 
 	void OnTriggerStay2D (Collider2D collider) {
 		if(collider.gameObject.tag == "Player") {
-
-			if(muteButton){
-				Physics2D.IgnoreCollision(this.collider2D,collider,true);
-			}else{
-				Physics2D.IgnoreCollision(this.collider2D,collider,false);
-				onde.SetActive(true);
-			}
-
 			Vector2 posCrieur = new Vector2(crieur.transform.position.x, crieur.transform.position.y);
 			Vector2 directionForce = new Vector2(1, 1);
 
-			if (!muteButton) {player.rigidbody2D.AddForceAtPosition(directionForce*Force/2, posCrieur);}
+			if (!muteButton) {player.rigidbody2D.AddForceAtPosition(directionForce*Force/2, posCrieur);}else{Physics2D.IgnoreCollision (this.collider2D, collider, true);}
 		}
 	}
 
+	void OnTriggerExit2D(Collider2D collider) {
+		if(collider.gameObject.tag == "Player") {
+
+			Physics2D.IgnoreCollision (this.collider2D, collider, false);
+		}
+	}
+	
 }
