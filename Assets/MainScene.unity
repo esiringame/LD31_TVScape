@@ -332,6 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a4ca44a958fdc49b7ab794fc5e3f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  screenScript: {fileID: 0}
 --- !u!1 &291662300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,7 +1544,7 @@ GameObject:
   - 33: {fileID: 1068952541}
   - 23: {fileID: 1068952540}
   - 61: {fileID: 1068952539}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Level_WallLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,7 +2039,7 @@ GameObject:
   - 33: {fileID: 1577252589}
   - 23: {fileID: 1577252588}
   - 61: {fileID: 1577252587}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Level_WallRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

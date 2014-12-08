@@ -29,7 +29,6 @@ public class ColoredBehaviour : MonoBehaviour
 	{
 		visible = true;
 		direction = Random.Range(0.0f, 2.0f) - 1.0f;
-		onWall = false;
 	}
 	
 	void Update ()
@@ -47,10 +46,8 @@ public class ColoredBehaviour : MonoBehaviour
 	}
 
 	void FixedUpdate() {
-		onWall = false;
-		//onWall = Physics2D.OverlapCircle (checkWallRight.position, radiusWall, Wall)
-		//	|| Physics2D.OverlapCircle (checkWallLeft.position, radiusWall, Wall);
-		//anim.SetBool("Wall", onWall);
+		onWall = Physics2D.OverlapCircle(checkWallRight.position, radiusWall, Wall)
+			|| Physics2D.OverlapCircle(checkWallLeft.position, radiusWall, Wall);
 	}
 
 
