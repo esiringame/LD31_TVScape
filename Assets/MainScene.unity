@@ -797,9 +797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 3
-  speed: 3
+  speed: 5
   radiusGround: .100000001
-  jump: 400
+  jump: 700
   checkGround: {fileID: 127638471}
   Ground:
     serializedVersion: 2
