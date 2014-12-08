@@ -11,6 +11,7 @@ public class SpawnGhost : MonoBehaviour {
 
 	private GameObject fantom;
 	private bool isActive = false;
+	public AudioClip ghost_sound;
 
 	void Start ()
 	{
@@ -26,11 +27,17 @@ public class SpawnGhost : MonoBehaviour {
 			if (isActive)
 			{
 				Vector2 fantomSpawnPosition = centerPortionSpawn (playerInstance);
+				// ###### Mise en place de l'audio du ghost ######
+				audio.Play();
+				// ###### FIN ######
 				fantom = Instantiate(fantomInstance, new Vector3 (fantomSpawnPosition.x, fantomSpawnPosition.y, 0), Quaternion.identity) as GameObject;
 				fantom.GetComponent<GhostBehaviour> ().player = playerInstance;
 			}
 			else
 			{
+				// ###### Mute du ghost ######
+				audio.mute = true;
+				// ###### FIN ######
 				Destroy(fantom);
 			}
 		}
