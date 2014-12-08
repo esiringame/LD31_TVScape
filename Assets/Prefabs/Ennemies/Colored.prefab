@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  player: {fileID: 100000, guid: c1d3d83e0175d7b4488e25f4d6f95253, type: 2}
+  player: {fileID: 0}
   color: 0
   moveSpeed: 3
   Wall:

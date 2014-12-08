@@ -68,12 +68,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8eacffa7eb41a84f89ac90960032c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 2
   speed: 8
   radiusGround: .100000001
   jump: 200
+  checkGround: {fileID: 0}
   Ground:
     serializedVersion: 2
     m_Bits: 4294967039
+  jump_sound: {fileID: 8300000, guid: aec83f73b43e2934d8c162f43d4f1da2, type: 3}
+  damage_sound: {fileID: 8300000, guid: 0df628fd62abf8b428afeb2c4388063d, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

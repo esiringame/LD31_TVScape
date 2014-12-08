@@ -92,7 +92,10 @@ public class ColoredBehaviour : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D collider)
 	{
-		if(collider.gameObject.tag == "Player")
-			player.GetComponent<PlayerMotor>().TakeDamage();
+		if (collider.gameObject.tag == "Player")
+		{
+			if(visible)
+			player.GetComponent<PlayerMotor> ().TakeDamage ();
+		}
 	}
 }
