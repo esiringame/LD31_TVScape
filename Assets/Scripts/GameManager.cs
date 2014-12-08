@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour {
 		anim.enabled = false;
 		state = GameState.Playing;
 		timeScore = 0;
-
+		
+		InitGame();
 		pause = false;
 	}
 	
@@ -63,16 +64,21 @@ public class GameManager : MonoBehaviour {
 			break;
 			
 		case GameState.Pause:
+
+			if (Input.GetKeyDown(KeyCode.Escape))
+				Resume();
 			
 			break;
 			
 		case GameState.GameOver:
-			if (Input.GetKeyDown(KeyCode.Return)){
-				GameOverScreen.transform.position = new Vector3(0, 0, 1);
+
+			if (Input.GetKeyDown(KeyCode.Return))
+			{
+				//GameOverScreen.transform.position = new Vector3(0, 0, 1);
 				anim.enabled = false;
-				//appeler le menu
-				//ChangeScreen();
+				InitGame();
 			}
+
 			break;
 			
 		}
@@ -93,16 +99,31 @@ public class GameManager : MonoBehaviour {
 		GameOverScreen.transform.position = new Vector3(pos.x, pos.y, state == GameState.GameOver ? -1 : 999999);
 	}
 
+	void InitGame()
+	{
+		state = GameState.Playing;
+		pause = false;
+
+		player.GetComponent<PlayerMotor>().life = 3;
+	}
+
 	void Pause()
 	{
 		state = GameState.Pause;
 		pause = true;
 	}
+	
+	void Resume()
+	{
+		state = GameState.Playing;
+		pause = false;
+	}
 
 	void GameOver()
 	{
+		state = GameState.GameOver;
 		anim.enabled = true;
 		anim.Play("Base Layer.testNeige");
-		state = GameState.GameOver;
+		pause = true;
 	}
 }
