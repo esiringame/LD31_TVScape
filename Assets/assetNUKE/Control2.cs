@@ -18,7 +18,7 @@ public class Control2 : MonoBehaviour {
 
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space)){
+		if(Input.GetKeyDown(KeyCode.A)){
 			if(ammo){
 				GameObject[] gO = GameObject.FindGameObjectsWithTag ("Enemy");
 				for(var i = 0 ; i < gO.Length ; i ++){

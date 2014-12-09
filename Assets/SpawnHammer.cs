@@ -6,6 +6,11 @@ public class SpawnHammer : MonoBehaviour {
 	public GameObject prefab;
 	public GameObject screenScript;
 
+	public GameObject teleporterSW;
+	public GameObject teleporterNW;
+	public GameObject teleporterNE;
+	public GameObject teleporterSE;
+
 	public bool stillHammer;
 	public int width;
 	public int height;
@@ -42,6 +47,10 @@ public class SpawnHammer : MonoBehaviour {
 			hammer.GetComponent<HammerBehaviour>().corner = corner;
 			hammer.GetComponent<HammerBehaviour>().screenScript = screenScript;
 			hammer.GetComponent<HammerBehaviour>().spawnHammer = gameObject;
+			hammer.GetComponent<HammerBehaviour>().teleporterSW = teleporterSW;
+			hammer.GetComponent<HammerBehaviour>().teleporterNW = teleporterNW;
+			hammer.GetComponent<HammerBehaviour>().teleporterNE = teleporterNE;
+			hammer.GetComponent<HammerBehaviour>().teleporterSE = teleporterSE;
 
 			stillHammer = true;
 			deltaHammer -= timerHammer;
@@ -53,10 +62,10 @@ public class SpawnHammer : MonoBehaviour {
 		Vector2 center = new Vector2(transform.position.x, transform.position.y);
 		switch (corner)
 		{
-			case 0: return new Vector2(center.x - width/2, center.y + height/2); break;
-			case 1: return new Vector2(center.x + width/2, center.y + height/2); break;
-			case 2: return new Vector2(center.x + width/2, center.y - height/2); break;
-			case 3: return new Vector2(center.x - width/2, center.y - height/2); break;
+			case 0: return new Vector2(center.x - width/2, center.y + height/2);
+			case 1: return new Vector2(center.x + width/2, center.y + height/2);
+			case 2: return new Vector2(center.x - width/2, center.y - height/2);
+			case 3: return new Vector2(center.x + width/2, center.y - height/2);
 		}
 		return Vector2.zero;
 	}
