@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour {
 	private float timeScore;
 	private int tutorialState = 0;
 
+    public bool waitActive;
+
 	Animator anim;
 
 	private bool pause
@@ -105,6 +107,8 @@ public class GameManager : MonoBehaviour {
 			
 		case GameState.GameOver:
 
+            pause = waitActive;
+
 			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
 			{
 				anim.enabled = false;
@@ -160,9 +164,17 @@ public class GameManager : MonoBehaviour {
 
 	void GameOver()
 	{
+        player.GetComponent<Rigidbody2D>().fixedAngle = false;
 		state = GameState.GameOver;
 		anim.enabled = true;
 		anim.Play("Base Layer.testNeige");
-		pause = true;
+        StartCoroutine(ded());
 	}
+
+	IEnumerator ded(){
+		waitActive = false;
+		yield return new WaitForSeconds (2.0f);
+		waitActive = true;
+	}
+
 }

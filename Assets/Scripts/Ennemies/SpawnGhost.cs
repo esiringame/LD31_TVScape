@@ -9,6 +9,8 @@ public class SpawnGhost : MonoBehaviour {
 	public float width = 10;
 	public float height = 10;
 
+    public PanelControl pc;
+
 	private GameObject fantom;
 	private bool isActive = false;
 	public AudioClip ghost_sound;
@@ -16,6 +18,7 @@ public class SpawnGhost : MonoBehaviour {
 	void Start ()
 	{
 		isActive = false;
+        pc.setSound(!isActive);
 	}
 
 	void Update ()
@@ -23,6 +26,7 @@ public class SpawnGhost : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
 		{
 		    isActive = !isActive;
+            pc.setSound(!isActive);
 
 			if (isActive)
 			{
