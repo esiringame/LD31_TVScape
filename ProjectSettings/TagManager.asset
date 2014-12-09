@@ -42,3 +42,7 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Tuto
+    userID: 1
+    uniqueID: 4013885961
+    locked: 0
