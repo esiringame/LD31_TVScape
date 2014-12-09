@@ -7,7 +7,7 @@ public class Nuke : MonoBehaviour {
 	{
 		if (other.tag== ("Player")) {
 			Destroy (this.gameObject);
-			other.GetComponent<Control2> ().addAmmo ();
+			other.GetComponent<PlayerMotor> ().addAmmo ();
 		}
 	}
 
