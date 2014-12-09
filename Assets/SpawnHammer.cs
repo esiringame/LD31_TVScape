@@ -6,6 +6,11 @@ public class SpawnHammer : MonoBehaviour {
 	public GameObject prefab;
 	public GameObject screenScript;
 
+	public GameObject teleporterSW;
+	public GameObject teleporterNW;
+	public GameObject teleporterNE;
+	public GameObject teleporterSE;
+
 	public bool stillHammer;
 	public int width;
 	public int height;

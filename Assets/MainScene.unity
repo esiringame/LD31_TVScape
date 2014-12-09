@@ -334,7 +334,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 100000, guid: a08b6eb0d8c025540bd801940c13cc81, type: 2}
   screenScript: {fileID: 863723267}
+  teleporterSW: {fileID: 335913072}
+  teleporterNW: {fileID: 1098955668}
+  teleporterNE: {fileID: 920098864}
+  teleporterSE: {fileID: 82972209}
   stillHammer: 0
+  width: 10
+  height: 8
 --- !u!1 &291662300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,6 +1399,7 @@ MonoBehaviour:
   state: 0
   PauseScreen: {fileID: 1411969073}
   GameOverScreen: {fileID: 901409457}
+  ScreenScript: {fileID: 863723267}
   player: {fileID: 744571440}
 --- !u!4 &985192475
 Transform:
@@ -1535,8 +1542,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1068952538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.5, y: 1.22000003, z: 0}
-  m_LocalScale: {x: .100000001, y: 12.6999998, z: 1}
+  m_LocalPosition: {x: -8.5, y: 1.13, z: 0}
+  m_LocalScale: {x: .100000001, y: 12.8999996, z: 1}
   m_Children: []
   m_Father: {fileID: 1649547366}
   m_RootOrder: 1
@@ -1904,7 +1911,7 @@ Transform:
   m_GameObject: {fileID: 1577252585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.43000031, y: 1.13, z: 0}
-  m_LocalScale: {x: .100000001, y: 12.6999998, z: 1}
+  m_LocalScale: {x: .100000001, y: 12.8999996, z: 1}
   m_Children: []
   m_Father: {fileID: 1649547366}
   m_RootOrder: 2

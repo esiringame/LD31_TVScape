@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour {
 		Menu,
 		Playing,
 		Pause,
-		GameOver
+		GameOver,
+		Victory
 	}
 	
 	public GameState state;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject PauseScreen;
 	public GameObject GameOverScreen;
+	public GameObject ScreenScript;
 	public GameObject player;
 	
 	private float timeScore;
@@ -46,17 +48,18 @@ public class GameManager : MonoBehaviour {
 		{
 			
 		case GameState.Playing:
-
-			if (player.GetComponent<PlayerMotor>().life <= 0)
+			
+			if (ScreenScript.GetComponent<ScreenScript>().totallyExplode)
+			{
+				Victory();
+			}
+			else if (player.GetComponent<PlayerMotor>().life <= 0)
 			{
 				GameOver();
-				break;
 			}
-
-			if (Input.GetKeyDown(KeyCode.Escape))
+			else if (Input.GetKeyDown(KeyCode.Escape))
 			{
 				Pause();
-				break;
 			}
 
 			timeScore += Time.deltaTime;
@@ -72,13 +75,21 @@ public class GameManager : MonoBehaviour {
 			
 		case GameState.GameOver:
 
-			if (Input.GetKeyDown(KeyCode.Return))
+			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
 			{
-				//GameOverScreen.transform.position = new Vector3(0, 0, 1);
 				anim.enabled = false;
 				InitGame();
 			}
 
+			break;
+			
+		case GameState.Victory:
+			
+			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+			{
+				InitGame();
+			}
+			
 			break;
 			
 		}
@@ -105,6 +116,12 @@ public class GameManager : MonoBehaviour {
 		pause = false;
 
 		player.GetComponent<PlayerMotor>().life = 3;
+	}
+
+	void Victory()
+	{
+		state = GameState.Victory;
+		pause = true;
 	}
 
 	void Pause()
