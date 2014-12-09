@@ -6,6 +6,7 @@ public class SpawnColored : MonoBehaviour
 	public Vector2 spawnPoint;
 	public int difficulty = 1;
 	public GameObject prefab;
+	public GameObject player;
 
 	public Sprite spriteRed;
 	public Sprite spriteGreen;
@@ -67,6 +68,8 @@ public class SpawnColored : MonoBehaviour
 
 		GameObject colored = Instantiate(prefab, new Vector3 (spawnPoint.x, spawnPoint.y, 0), Quaternion.identity) as GameObject;
 		colored.GetComponent<ColoredBehaviour> ().componentsRGB = componentsRGB;
+		colored.GetComponent<ColoredBehaviour> ().player = player;
+		colored.GetComponent<ColoredBehaviour>().color = type;
 		colored.GetComponent<SpriteRenderer>().sprite = spriteToRender;
 	}
 }

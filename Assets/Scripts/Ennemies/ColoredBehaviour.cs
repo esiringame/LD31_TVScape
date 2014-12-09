@@ -29,7 +29,6 @@ public class ColoredBehaviour : MonoBehaviour
 	{
 		visible = true;
 		direction = Random.Range(0.0f, 2.0f) - 1.0f;
-		onWall = false;
 	}
 	
 	void Update ()
@@ -47,10 +46,8 @@ public class ColoredBehaviour : MonoBehaviour
 	}
 
 	void FixedUpdate() {
-		onWall = false;
-		//onWall = Physics2D.OverlapCircle (checkWallRight.position, radiusWall, Wall)
-		//	|| Physics2D.OverlapCircle (checkWallLeft.position, radiusWall, Wall);
-		//anim.SetBool("Wall", onWall);
+		onWall = Physics2D.OverlapCircle(checkWallRight.position, radiusWall, Wall)
+			|| Physics2D.OverlapCircle(checkWallLeft.position, radiusWall, Wall);
 	}
 
 
@@ -70,7 +67,9 @@ public class ColoredBehaviour : MonoBehaviour
 		case ColorType.Cyan: visible = green && blue; break;
 		}
 
-		gameObject.SetActive(visible);
+		Color temp = GetComponent<SpriteRenderer>().color;
+		temp.a = visible ? 1 : 0;
+		GetComponent<SpriteRenderer>().color = temp;
 	}
 
 	void flip() //demi tour, renversement de sprite
@@ -82,10 +81,20 @@ public class ColoredBehaviour : MonoBehaviour
 		transform.Translate(direction*0.5f, 0, 0);
 	}
 
-	void OnTriggerStay2D(Collider2D collider)
+	void OnTriggerEnter2D(Collider2D coll)
 	{
-		if(collider.gameObject.tag == "Player")
-			player.GetComponent<PlayerMotor>().TakeDamage();
+		if (coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "Player") {
+			Physics2D.IgnoreCollision(this.collider2D,coll);
+		}
+
 	}
 
+	void OnTriggerStay2D(Collider2D collider)
+	{
+		if (collider.gameObject.tag == "Player")
+		{
+			if(visible)
+			player.GetComponent<PlayerMotor> ().TakeDamage ();
+		}
+	}
 }

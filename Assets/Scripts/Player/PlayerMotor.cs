@@ -17,6 +17,11 @@ public class PlayerMotor : MonoBehaviour {
 	private float invicibility = invicibilityTime;
 	public AudioClip jump_sound;
 	public AudioClip damage_sound;
+	
+	public GameObject blankScreen;
+	private bool waitActive = false;
+
+	private bool ammo =false;
 
 	public bool isInvicible{
 		get{return invicibility < invicibilityTime;}
@@ -45,8 +50,39 @@ public class PlayerMotor : MonoBehaviour {
 		Color temp = GetComponent<SpriteRenderer> ().color;
 		temp.a = isInvicible ? 0.5f : 1f;
 		GetComponent<SpriteRenderer> ().color = temp;
+
+		if(Input.GetKeyDown(KeyCode.Space)){
+			if(ammo){
+				GameObject[] gO = GameObject.FindGameObjectsWithTag ("Enemy");
+				for(var i = 0 ; i < gO.Length ; i ++){
+					Destroy(gO[i]);
+				}
+				ammo=false;
+				audio.Play();
+				GameObject[] cam=GameObject.FindGameObjectsWithTag ("MainCamera");
+
+				StartCoroutine(comBackScreen());
+			}
+			
+		}
+
+		if (waitActive) {
+				blankScreen.GetComponent<SpriteRenderer> ().enabled = true;
+		} else {
+				blankScreen.GetComponent<SpriteRenderer> ().enabled = false;
+		}
 	}
 
+
+	IEnumerator comBackScreen(){
+		waitActive = true;
+		yield return new WaitForSeconds (2.0f);
+		waitActive = false;
+	}
+
+	public void addAmmo(){
+		ammo = true;
+	}
 
 	void FixedUpdate()
 	{
