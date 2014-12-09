@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
 			{
 				anim.enabled = false;
-				InitGame();
+				Application.LoadLevel (Application.loadedLevelName);
 			}
 
 			break;
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour {
 			
 			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
 			{
-				InitGame();
+				Application.LoadLevel (Application.loadedLevelName);
 			}
 			
 			break;
