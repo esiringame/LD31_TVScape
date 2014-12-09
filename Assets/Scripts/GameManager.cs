@@ -19,8 +19,16 @@ public class GameManager : MonoBehaviour {
 	public GameObject GameOverScreen;
 	public GameObject ScreenScript;
 	public GameObject player;
+
+	public GameObject Home;
+	public GameObject Tutorial1;
+	public GameObject Tutorial2;
+	public GameObject Tutorial3;
+	public GameObject Tutorial4;
+	public GameObject Tutorial5;
 	
 	private float timeScore;
+	private int tutorialState = 0;
 
 	Animator anim;
 
@@ -34,11 +42,11 @@ public class GameManager : MonoBehaviour {
 	{
 		anim = GameOverScreen.GetComponent<Animator>();
 		anim.enabled = false;
-		state = GameState.Playing;
+		state = GameState.Menu;
 		timeScore = 0;
-		
-		InitGame();
-		pause = false;
+		tutorialState = 0;
+
+		pause = true;
 	}
 	
 	// Update is called once per frame
@@ -46,7 +54,29 @@ public class GameManager : MonoBehaviour {
 	{
 		switch (state)
 		{
+
+		case GameState.Menu:
 			
+			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+			{
+				tutorialState++;
+				switch (tutorialState)
+				{
+				case 1: Home.transform.position = new Vector3(0,0,-10); break;
+				case 2: Tutorial1.transform.position = new Vector3(0,0,-10); break;
+				case 3: Tutorial2.transform.position = new Vector3(0,0,-10); break;
+				case 4: Tutorial3.transform.position = new Vector3(0,0,-10); break;
+				case 5: Tutorial4.transform.position = new Vector3(0,0,-10); break;
+				case 6:
+					Tutorial5.transform.position = new Vector3(0,0,-10);
+					state = GameState.Playing;
+					pause = false;
+					break;
+				}
+			}
+			
+			break;
+
 		case GameState.Playing:
 			
 			if (ScreenScript.GetComponent<ScreenScript>().totallyExplode)
@@ -108,14 +138,6 @@ public class GameManager : MonoBehaviour {
 		PauseScreen.transform.position = new Vector3(pos.x, pos.y, state == GameState.Pause ? -1 : 999999);
 		pos = GameOverScreen.transform.position;
 		GameOverScreen.transform.position = new Vector3(pos.x, pos.y, state == GameState.GameOver ? -1 : 999999);
-	}
-
-	void InitGame()
-	{
-		state = GameState.Playing;
-		pause = false;
-
-		player.GetComponent<PlayerMotor>().life = 3;
 	}
 
 	void Victory()
