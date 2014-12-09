@@ -20,7 +20,10 @@ public class PlayerMotor : MonoBehaviour {
 
 	private bool waitActive = false;
 
+    private bool facingRight = true;
 	private bool ammo =false;
+
+    Animator anim;
 
 	public bool isInvicible{
 		get{return invicibility < invicibilityTime;}
@@ -28,7 +31,7 @@ public class PlayerMotor : MonoBehaviour {
 
 	void Start ()
 	{
-	
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -80,11 +83,27 @@ public class PlayerMotor : MonoBehaviour {
 	void FixedUpdate()
 	{
 		float X = Input.GetAxis ("Horizontal");
+        anim.SetFloat("hSpeed", Mathf.Abs(X));
+
+        anim.SetFloat("vSpeed",rigidbody2D.velocity.y);
+
+        if(X>0 && !facingRight)
+            Flip();
+        else if (X<0 && facingRight)
+            Flip();
+
 		if (X != 0)
 			transform.Translate (X * speed * Time.deltaTime,0,0);
 
 		onGround = Physics2D.OverlapCircle (checkGround.position, radiusGround, Ground);
 	}
+
+    private void Flip() {
+        facingRight = !facingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
 
 	public void TakeDamage()
 	{

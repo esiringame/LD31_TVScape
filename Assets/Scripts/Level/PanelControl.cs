@@ -13,11 +13,6 @@ public class PanelControl : MonoBehaviour {
     public Sprite soundOff;
     public Sprite slider;
 
-    //DEBUG
-    public bool allum;
-    public bool allumb;
-    //FIN DEBUG
-
     private SpriteRenderer spriteSlideR;
     private SpriteRenderer spriteSlideG;
     private SpriteRenderer spriteSlideB;
@@ -89,22 +84,10 @@ public class PanelControl : MonoBehaviour {
         startTimeB = Time.time;
         journeyLength = Vector3.Distance(startSlideR.position, stopSlideR.position);
 
-        // Init
-        setR(false);
-        setG(false);
-        setB(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(allum) {
-            setR(true);
-            allum=false;
-        }
-        if(allumb) {
-            setR(false);
-            allumb=false;
-        }
 
         // Slide the godamn sliders
         float distCoveredR = (Time.time - startTimeR) * sliderSpeed;
@@ -120,17 +103,17 @@ public class PanelControl : MonoBehaviour {
 	
 	}
 
-    void setPower(bool status) {
+    public void setPower(bool status) {
         if (status) mainSwitch.sprite = powerOn;
         else mainSwitch.sprite = powerOff;
     }
 
-    void setSound(bool status) {
-        if (status) soundSwitch.sprite = powerOn;
-        else soundSwitch.sprite = powerOff;
+    public void setSound(bool status) {
+        if (status) soundSwitch.sprite = soundOn;
+        else soundSwitch.sprite = soundOff;
     }
 
-    void setR(bool status) {
+    public void setR(bool status) {
         if (status && !oldStatusR) {
             sROrigin = startSlideR;
             sRTarget = stopSlideR;
@@ -146,7 +129,7 @@ public class PanelControl : MonoBehaviour {
         }
     }
 
-    void setG(bool status) {
+    public void setG(bool status) {
         if (status && !oldStatusG) {
             sGOrigin = startSlideG;
             sGTarget = stopSlideG;
@@ -162,7 +145,7 @@ public class PanelControl : MonoBehaviour {
         }
     }
 
-    void setB(bool status) {
+    public void setB(bool status) {
         if (status && !oldStatusB) {
             sBOrigin = startSlideB;
             sBTarget = stopSlideB;

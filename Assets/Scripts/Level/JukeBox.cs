@@ -23,14 +23,16 @@ public class JukeBox : MonoBehaviour
 		muteButton = false;
 		muteDistance = false;
 
+
 		onde = (GameObject)Instantiate(prefabOnde, transform.position, Quaternion.identity);
 		onde.transform.parent = transform;
 	}
 
 	void Update ()
 	{
-		if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+		if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4)) {
 			muteButton = !muteButton;
+        }
 
 		Vector2 posPlayer = new Vector2(player.transform.position.x, player.transform.position.y);
 		Vector2 posCrieur = new Vector2(crieur.transform.position.x, crieur.transform.position.y);

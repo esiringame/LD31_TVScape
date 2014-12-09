@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
 	public GameObject prefabGround;
 	public GameObject prefabWall;
 	public GameObject prefabCrieur;
-	
+    
 	public int seed = 0;
 	public bool fixSeed = false;
 	public int difficulty = 1;
