@@ -17,8 +17,7 @@ public class PlayerMotor : MonoBehaviour {
 	private float invicibility = invicibilityTime;
 	public AudioClip jump_sound;
 	public AudioClip damage_sound;
-	
-	public GameObject blankScreen;
+
 	private bool waitActive = false;
 
 	private bool ammo =false;
@@ -64,12 +63,6 @@ public class PlayerMotor : MonoBehaviour {
 				StartCoroutine(comBackScreen());
 			}
 			
-		}
-
-		if (waitActive) {
-				blankScreen.GetComponent<SpriteRenderer> ().enabled = true;
-		} else {
-				blankScreen.GetComponent<SpriteRenderer> ().enabled = false;
 		}
 	}
 

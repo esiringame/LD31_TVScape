@@ -1050,7 +1050,6 @@ MonoBehaviour:
     m_Bits: 4294967039
   jump_sound: {fileID: 8300000, guid: aec83f73b43e2934d8c162f43d4f1da2, type: 3}
   damage_sound: {fileID: 8300000, guid: 0df628fd62abf8b428afeb2c4388063d, type: 3}
-  blankScreen: {fileID: 3531127}
 --- !u!50 &744571446
 Rigidbody2D:
   m_ObjectHideFlags: 0
