@@ -1,4 +1,4 @@
 LD2014
 ======
 
-LudumDare 2014 by ESIR IN GAME (studio)
+ESIR IN game for Ludum Dare 31
